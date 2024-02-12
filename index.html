@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Data Receiver</title>
+    <script>
+        function handleData(data) {
+            console.log("Received data:", data);
+            // Add your logic to handle the received JSON data here
+        }
+    </script>
+</head>
+<body>
+    <h1>ESP32 Data Receiver</h1>
+    <script>
+        // Extract JSON data from the URL
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const jsonData = urlParams.get('data');
+
+        // If JSON data is present, parse and handle it
+        if (jsonData) {
+            const data = JSON.parse(decodeURIComponent(jsonData));
+            handleData(data);
+        }
+    </script>
+</body>
+</html>
